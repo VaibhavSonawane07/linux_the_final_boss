@@ -175,6 +175,22 @@ grep '^testgroup' /etc/group                     # From file
 ### File Ownership & Permissions
 Every file has an owner (user), group, and permissions that control access for the owner, group, and others (everyone else). Permissions are represented as `rwxrwxrwx` (or `-` for none), where the first three chars are for owner (u), next for group (g), last for others (o). Each position: r=read (view content), w=write (modify), x=execute (run as program or enter dir).
 
+Umask
+```
+root user = 022 
+local user = 002
+```
+```
+full permission 666
+full permission 777
+
+
+umask 022
+full permission - umask = defalt permission
+file 666 - 022 = 644
+
+dir = rwxrwxrwx - 022 = rwxr_xr_x
+
 Permissions can be set using two modes:
 - **Numeric (Octal) Mode:** A 3-digit octal number (000-777) where each digit represents perms for owner/group/other. Calculate by adding: r=4, w=2, x=1 (e.g., rwx=7, rw-=6, r-x=5). Leading 4/2/1 for special perms (SUID/SGID/Sticky). Quick for scripts/automation.
 - **Symbolic Mode:** Specify target (u=owner, g=group, o=others, a=all), operator (+=add, -=remove, ==set exactly), and perms (r/w/x). E.g., `a+rx` adds read/exec for all. Flexible for incremental changes; recursive with `-R`.
