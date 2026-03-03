@@ -64,6 +64,15 @@ This creates users `testuser1` and `testuser2`, group `testgroup`, and sample fi
 Users are identified by UID (User ID); groups by GID (Group ID). System users (UID < 1000) run services; regular users (UID >= 1000) are for humans. 
 
 - **Key Files:**
+
+- ## Important Affected Files
+
+| File | Purpose |
+|----|--------|
+| `/etc/passwd` | User accounts |
+| `/etc/shadow` | Encrypted passwords |
+| `/etc/group` | Group details |
+
   - **/etc/passwd:** Stores user account info (non-sensitive). World-readable for compatibility (e.g., for mailers). Each line is colon-separated fields. Format: `username:password:UID:GID:GECOS:home:shell`.
     - **Fields:** 
       - `username`: Unique login name.
